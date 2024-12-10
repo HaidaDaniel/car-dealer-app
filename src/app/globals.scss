@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --color-background-light: #919191;
-  --color-foreground-light: #3f3f3f;
-  --color-background-dark: #0a0a0a;
-  --color-foreground-dark: #ededed;
-  --color-select-bg: #1a1a1a;
-  --color-select-border: #333;
-  --color-select-hover: #374151;
+  --color-background-light: #f9fafb;
+  --color-foreground-light: #1f2937;
+  --color-background-dark: #111827;
+  --color-foreground-dark: #f3f4f6;
+  --color-select-bg: #1e293b;
+  --color-select-border: #334155;
+  --color-select-hover: #475569;
   --color-select-checked: #2563eb;
 }
 
@@ -37,6 +37,9 @@ select {
   background-color: var(--color-select-bg);
   color: white;
   border: 1px solid var(--color-select-border);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 option {

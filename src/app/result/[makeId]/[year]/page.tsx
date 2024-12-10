@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { fetchVehicleModels } from "@/utils/vehicles";
 import VehicleModelList from "@/components/VehicleModelList/VehicleModelList";
+import Loader from "@/components/Loader/Loader";
 
 interface Props {
   params: {
@@ -9,33 +10,29 @@ interface Props {
   };
 }
 
-const ResultPage: React.FC<Props> = async ({ params }) => {
+const VehicleModels = async ({ params }: Props) => {
   const { makeId, year } = params;
+  const models = await fetchVehicleModels(makeId, year);
 
-  try {
-    const models = await fetchVehicleModels(makeId, year);
-
-    if (models.length === 0) {
-      return (
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-gray-500 text-lg">No models found for the selected make and year.</p>
-        </div>
-      );
-    }
-
+  if (models.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-        <VehicleModelList models={models} />
-      </div>
-    );
-  } catch (error) {
-    console.error("Error fetching vehicle models:", error);
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-red-500">Failed to fetch vehicle models. Please try again later.</p>
-      </div>
+      <p className="text-gray-400 text-lg">
+        No models found for the selected make and year.
+      </p>
     );
   }
+
+  return <VehicleModelList models={models} />;
 };
+
+const ResultPage: React.FC<Props> = ({ params }) => {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-6">
+        <Suspense fallback={<Loader/>}>
+          <VehicleModels params={params} />
+        </Suspense>
+      </div>
+    );
+  };
 
 export default ResultPage;
