@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background-light: #919191;
+  --color-foreground-light: #3f3f3f;
+  --color-background-dark: #0a0a0a;
+  --color-foreground-dark: #ededed;
+  --color-select-bg: #1a1a1a;
+  --color-select-border: #333;
+  --color-select-hover: #374151;
+  --color-select-checked: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-background-dark);
+    --foreground: var(--color-foreground-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--color-background-light);
+    --foreground: var(--color-foreground-light);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+select {
+  background-color: var(--color-select-bg);
+  color: white;
+  border: 1px solid var(--color-select-border);
+}
+
+option {
+  background-color: var(--color-select-bg);
+  color: white;
+}
+
+option:checked {
+  background-color: var(--color-select-checked);
+  color: white;
+}
+
+option:hover {
+  background-color: var(--color-select-hover);
+}
