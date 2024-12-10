@@ -7,12 +7,11 @@ import FilterForm from "@/components/Filter/FilterForm";
 import Loader from "@/components/Loader/Loader";
 
 const FilterPage = () => {
-  const {  loading } = useVehicleMakes();
-
+  const { loading } = useVehicleMakes();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 ">
-      {loading ? <Loader/> :  <FilterForm />}
+    <div className="flex min-h-screen flex-col items-center justify-center p-6 ">
+      {loading ? <Loader /> : <FilterForm />}
     </div>
   );
 };

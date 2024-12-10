@@ -2,7 +2,6 @@ import { VehicleMake } from "@/types/api";
 import { fetchVehicleMakes } from "@/utils/vehicles";
 import { useEffect, useState } from "react";
 
-
 export const useVehicleMakes = () => {
   const [makes, setMakes] = useState<VehicleMake[]>([]);
   const [loading, setLoading] = useState(true);
