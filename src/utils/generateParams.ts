@@ -6,7 +6,7 @@ export async function generateParams() {
     const response = await axios.get(
       "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json",
     );
-    const makes = response.data.Results.slice(0, 3);
+    const makes = response.data.Results.slice(0, 3); // generate props only for 3 makes
 
     const params = [];
 

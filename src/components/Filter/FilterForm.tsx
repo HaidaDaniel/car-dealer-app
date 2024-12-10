@@ -1,13 +1,11 @@
-import { useVehicleMakes } from "@/hooks/useVehicleMakes";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import Loader from "../Loader/Loader";
 import { years } from "@/utils/years";
+import { VehicleMake } from "@/types/api";
 
-const FilterForm = () => {
+const FilterForm = ({ makes }: { makes: VehicleMake[] }) => {
   const [selectedMake, setSelectedMake] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
-  const { makes, loading, error } = useVehicleMakes();
 
   const router = useRouter();
   const handleNext = () => {
@@ -16,12 +14,9 @@ const FilterForm = () => {
     }
   };
 
-  if (loading) return <Loader />;
-  if (error) return <p>{error}</p>;
-
   return (
     <>
-      <h1 className="mb-8  text-3xl">Car Dealer App</h1>
+      <h1 className="mb-8 text-3xl">Car Dealer App</h1>
       <div className="w-full max-w-md rounded-xl bg-gradient-to-r from-gray-800 to-gray-900 p-8 shadow-xl">
         <h2 className="mb-6 text-2xl font-semibold text-white">
           Filter Your Search
